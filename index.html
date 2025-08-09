@@ -58,47 +58,18 @@
     text-align: center;
   }
 
-  /* Logos */
+  /* Logos - Tamaño aumentado */
   .logo {
-    width: 500px;
-    margin-bottom: 30px;
+    width: 900px; /* Tamaño aumentado */
+    margin-bottom: 40px;
     opacity: 0;
     transform: translateY(-50px);
     transition: all 0.8s ease;
   }
 
-  /* Titles */
-  h1.titulo {
-    font-size: 5rem;
-    font-weight: 900;
-    margin: 0 0 20px 0;
-    line-height: 1.1;
-    opacity: 0;
-    transform: translateX(-100%);
-    transition: all 0.8s ease;
-  }
-
-  h1.titulo .e-yellow {
-    color: #F4A300;
-    font-weight: 900;
-    font-size: 6rem;
-    font-style: normal;
-  }
-
-  /* Subtitle */
-  h2.subtitulo {
-    font-size: 2rem;
-    font-weight: 700;
-    letter-spacing: 5px;
-    margin: 0 0 50px 0;
-    opacity: 0;
-    transform: translateX(100%);
-    transition: all 0.8s ease;
-  }
-
-  /* Contenedor de botón principal */
+  /* Contenedor de botón principal - AHORA INMEDIATAMENTE DEBAJO DEL LOGO */
   .btn-container {
-    margin-top: 20px;
+    margin-bottom: 50px; /* Espacio antes de los textos */
     opacity: 0;
     transform: scale(0.5);
     transition: all 0.5s ease;
@@ -129,6 +100,35 @@
   .btn:hover {
     background-color: #ffbb33;
     transform: scale(1.05);
+  }
+
+  /* Titles */
+  h1.titulo {
+    font-size: 5rem;
+    font-weight: 900;
+    margin: 0 0 20px 0;
+    line-height: 1.1;
+    opacity: 0;
+    transform: translateX(-100%);
+    transition: all 0.8s ease;
+  }
+
+  h1.titulo .e-yellow {
+    color: #F4A300;
+    font-weight: 900;
+    font-size: 6rem;
+    font-style: normal;
+  }
+
+  /* Subtitle */
+  h2.subtitulo {
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 5px;
+    margin: 0;
+    opacity: 0;
+    transform: translateX(100%);
+    transition: all 0.8s ease;
   }
 
   /* Flechas modernas */
@@ -207,30 +207,33 @@
 
   /* Clases de animación */
   .animar-logo { opacity: 1 !important; transform: translateY(0) !important; }
+  .animar-btn-container { opacity: 1 !important; transform: scale(1) !important; }
   .animar-titulo { opacity: 1 !important; transform: translateX(0) !important; }
   .animar-subtitulo { opacity: 1 !important; transform: translateX(0) !important; }
-  .animar-btn-container { opacity: 1 !important; transform: scale(1) !important; }
 </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
 
-<!-- Pantalla Slide 1 -->
+<!-- Pantalla Slide 1 - Estructura corregida: Logo > Botón > Textos -->
 <div id="slide1" class="pantalla activa">
   <div class="contenido-slide">
     <img src="RECURSOS/de.png" class="logo" id="logo1" alt="Logo DE">
-    <h1 class="titulo" id="titulo1">ACTUALIZA TUS DATOS</h1>
-    <h2 class="subtitulo" id="subtitulo1">Para mantener tu seguridad, comunicación ágil y una experiencia hecha a tu medida.</h2>
     <div class="btn-container" id="btn-container1">
       <button class="btn" id="boton1" onclick="mostrarPantalla('formulario', urlFormulario1)">EMPEZAR</button>
     </div>
+    <h1 class="titulo" id="titulo1">ACTUALIZA TUS DATOS</h1>
+    <h2 class="subtitulo" id="subtitulo1">Para mantener tu seguridad, comunicación ágil y una experiencia hecha a tu medida.</h2>
   </div>
 </div>
 
-<!-- Pantalla Slide 2 -->
+<!-- Pantalla Slide 2 - Estructura corregida: Logo > Botón > Textos -->
 <div id="slide2" class="pantalla">
   <div class="contenido-slide">
     <img src="RECURSOS/de1.png" class="logo" id="logo2" alt="Logo Diners Club">
+    <div class="btn-container" id="btn-container2">
+      <button class="btn" id="boton2" onclick="mostrarPantalla('formulario', urlFormulario2)">ÚNETE AHORA</button>
+    </div>
     <h1 class="titulo" id="titulo2">
       APROVECHA Y PAGA LAS ÚLTIMAS SEMANAS DE CAMPAMENTO CON TU:<br />
       <span style="font-weight:900;">Diners Club</span>
@@ -238,9 +241,6 @@
     <h2 class="subtitulo" id="subtitulo2">
       Difiere 3 MESES SIN INTERESES + 3 MESES DE GRACIA
     </h2>
-    <div class="btn-container" id="btn-container2">
-      <button class="btn" id="boton2" onclick="mostrarPantalla('formulario', urlFormulario2)">ÚNETE AHORA</button>
-    </div>
   </div>
 </div>
 
@@ -308,9 +308,9 @@ function volverASlide() {
 }
 
 function reiniciarAnimaciones() {
-  ['logo1','titulo1','subtitulo1','btn-container1','logo2','titulo2','subtitulo2','btn-container2']
+  ['logo1','btn-container1','titulo1','subtitulo1','logo2','btn-container2','titulo2','subtitulo2']
   .forEach(id => document.getElementById(id).classList.remove(
-    'animar-logo','animar-titulo','animar-subtitulo','animar-btn-container'
+    'animar-logo','animar-btn-container','animar-titulo','animar-subtitulo'
   ));
   void document.getElementById('logo1').offsetWidth; // Reflow
 }
@@ -318,18 +318,25 @@ function reiniciarAnimaciones() {
 function animarSlideActual() {
   const currentSlideNum = slideActual === 'slide1' ? 1 : 2;
   
-  setTimeout(() => document.getElementById(`logo${currentSlideNum}`).classList.add('animar-logo'), 200);
+  // Animación simultánea para logo y botón
+  setTimeout(() => {
+    document.getElementById(`logo${currentSlideNum}`).classList.add('animar-logo');
+    document.getElementById(`btn-container${currentSlideNum}`).classList.add('animar-btn-container');
+  }, 200);
+  
+  // Animación para textos
   setTimeout(() => document.getElementById(`titulo${currentSlideNum}`).classList.add('animar-titulo'), 500);
   setTimeout(() => document.getElementById(`subtitulo${currentSlideNum}`).classList.add('animar-subtitulo'), 800);
-  setTimeout(() => document.getElementById(`btn-container${currentSlideNum}`).classList.add('animar-btn-container'), 1100);
 }
 
 function animarInicio() {
   // Animación inicial para el slide 1
-  setTimeout(() => document.getElementById('logo1').classList.add('animar-logo'), 200);
+  setTimeout(() => {
+    document.getElementById('logo1').classList.add('animar-logo');
+    document.getElementById('btn-container1').classList.add('animar-btn-container');
+  }, 200);
   setTimeout(() => document.getElementById('titulo1').classList.add('animar-titulo'), 500);
   setTimeout(() => document.getElementById('subtitulo1').classList.add('animar-subtitulo'), 800);
-  setTimeout(() => document.getElementById('btn-container1').classList.add('animar-btn-container'), 1100);
 }
 
 window.onload = function() {
