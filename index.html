@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8" />
-<title>Kiosco 1080x1920 Perfecto</title>
+<title>Kiosco 1080x1920 Dinámico</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&display=swap');
 
@@ -38,16 +38,10 @@
   }
 
   /* Slide 1 */
-  #slide1 {
-    background-color: #0B2144;
-  }
-
+  #slide1 { background-color: #0B2144; }
   /* Slide 2 */
-  #slide2 {
-    background-color: #B21771;
-  }
+  #slide2 { background-color: #B21771; }
 
-  /* Contenido del slide */
   .contenido-slide {
     display: flex;
     flex-direction: column;
@@ -58,24 +52,21 @@
     text-align: center;
   }
 
-  /* Logos - Tamaño aumentado */
   .logo {
-    width: 900px; /* Tamaño aumentado */
+    width: 900px;
     margin-bottom: 40px;
     opacity: 0;
     transform: translateY(-50px);
     transition: all 0.8s ease;
   }
 
-  /* Contenedor de botón principal - AHORA INMEDIATAMENTE DEBAJO DEL LOGO */
   .btn-container {
-    margin-bottom: 50px; /* Espacio antes de los textos */
+    margin-bottom: 50px;
     opacity: 0;
     transform: scale(0.5);
     transition: all 0.5s ease;
   }
 
-  /* Buttons */
   .btn {
     font-size: 2.5rem;
     font-weight: 700;
@@ -87,22 +78,14 @@
     transition: all 0.3s ease;
   }
 
-  #slide1 .btn {
-    background-color: #F4A300;
-    color: #0B2144;
-  }
-
-  #slide2 .btn {
-    background-color: #F4A300;
-    color: #B21771;
-  }
+  #slide1 .btn { background-color: #F4A300; color: #0B2144; }
+  #slide2 .btn { background-color: #F4A300; color: #B21771; }
 
   .btn:hover {
     background-color: #ffbb33;
     transform: scale(1.05);
   }
 
-  /* Titles */
   h1.titulo {
     font-size: 5rem;
     font-weight: 900;
@@ -113,14 +96,6 @@
     transition: all 0.8s ease;
   }
 
-  h1.titulo .e-yellow {
-    color: #F4A300;
-    font-weight: 900;
-    font-size: 6rem;
-    font-style: normal;
-  }
-
-  /* Subtitle */
   h2.subtitulo {
     font-size: 2rem;
     font-weight: 700;
@@ -131,7 +106,7 @@
     transition: all 0.8s ease;
   }
 
-  /* Flechas modernas */
+  /* Flechas */
   .nav-arrow {
     position: fixed;
     top: 50%;
@@ -148,43 +123,17 @@
     transition: all 0.3s ease;
     z-index: 10;
   }
-
+  .nav-arrow.left { left: 30px; }
+  .nav-arrow.right { right: 30px; }
   .nav-arrow:hover {
     background-color: rgba(255, 255, 255, 0.3);
     transform: translateY(-50%) scale(1.1);
   }
+  .nav-arrow i { font-size: 3.5rem; color: white; }
+  .nav-arrow.oculto { display: none; }
 
-  .nav-arrow i {
-    font-size: 3.5rem;
-    color: white;
-  }
-
-  .nav-arrow.left {
-    left: 30px;
-  }
-
-  .nav-arrow.right {
-    right: 30px;
-  }
-
-  /* Ocultar flechas cuando sea necesario */
-  .nav-arrow.oculto {
-    display: none;
-  }
-
-  /* Iframe y botón atrás */
-  .iframe-container {
-    position: relative;
-    width: 100%;
-    height: 100%;
-  }
-
-  #iframeForm {
-    width: 100%;
-    height: 100%;
-    border: none;
-    background: white;
-  }
+  .iframe-container { position: relative; width: 100%; height: 100%; }
+  #iframeForm { width: 100%; height: 100%; border: none; background: white; }
 
   .btn-atras {
     position: absolute;
@@ -199,13 +148,9 @@
     border: none;
     cursor: pointer;
     z-index: 30;
-    transition: background-color 0.3s ease;
   }
-  .btn-atras:hover {
-    background-color: #ffbb33;
-  }
+  .btn-atras:hover { background-color: #ffbb33; }
 
-  /* Clases de animación */
   .animar-logo { opacity: 1 !important; transform: translateY(0) !important; }
   .animar-btn-container { opacity: 1 !important; transform: scale(1) !important; }
   .animar-titulo { opacity: 1 !important; transform: translateX(0) !important; }
@@ -215,24 +160,24 @@
 </head>
 <body>
 
-<!-- Pantalla Slide 1 - Estructura corregida: Logo > Botón > Textos -->
-<div id="slide1" class="pantalla activa">
+<!-- Slide 1 -->
+<div id="slide1" class="pantalla">
   <div class="contenido-slide">
     <img src="RECURSOS/de.png" class="logo" id="logo1" alt="Logo DE">
     <div class="btn-container" id="btn-container1">
-      <button class="btn" id="boton1" onclick="mostrarPantalla('formulario', urlFormulario1)">EMPEZAR</button>
+      <button class="btn" onclick="mostrarPantalla('formulario', urlFormulario1)">EMPEZAR</button>
     </div>
     <h1 class="titulo" id="titulo1">ACTUALIZA TUS DATOS</h1>
     <h2 class="subtitulo" id="subtitulo1">Para mantener tu seguridad, comunicación ágil y una experiencia hecha a tu medida.</h2>
   </div>
 </div>
 
-<!-- Pantalla Slide 2 - Estructura corregida: Logo > Botón > Textos -->
+<!-- Slide 2 -->
 <div id="slide2" class="pantalla">
   <div class="contenido-slide">
     <img src="RECURSOS/de1.png" class="logo" id="logo2" alt="Logo Diners Club">
     <div class="btn-container" id="btn-container2">
-      <button class="btn" id="boton2" onclick="mostrarPantalla('formulario', urlFormulario2)">ÚNETE AHORA</button>
+      <button class="btn" onclick="mostrarPantalla('formulario', urlFormulario2)">ÚNETE AHORA</button>
     </div>
     <h1 class="titulo" id="titulo2">
       APROVECHA Y PAGA LAS ÚLTIMAS SEMANAS DE CAMPAMENTO CON TU:<br />
@@ -244,55 +189,51 @@
   </div>
 </div>
 
-<!-- Flechas de navegación -->
-<div class="nav-arrow left" id="flecha-izquierda">
-  <i class="fas fa-chevron-left"></i>
-</div>
-<div class="nav-arrow right" id="flecha-derecha">
-  <i class="fas fa-chevron-right"></i>
-</div>
+<!-- Flechas -->
+<div class="nav-arrow left" id="flecha-izquierda"><i class="fas fa-chevron-left"></i></div>
+<div class="nav-arrow right" id="flecha-derecha"><i class="fas fa-chevron-right"></i></div>
 
-<!-- Pantalla Formulario -->
+<!-- Formulario -->
 <div id="formulario" class="pantalla">
   <div class="iframe-container">
     <button class="btn-atras" onclick="volverASlide()">ATRÁS</button>
-    <iframe id="iframeForm" name="iframeForm"></iframe>
+    <iframe id="iframeForm"></iframe>
   </div>
 </div>
 
 <script>
-// URLs de los formularios
-const urlFormulario1 = "https://forms.cloud.microsoft/pages/responsepage.aspx?id=azJ7LIv7r0avLTLrVDJyX5cV9zGSZK5Ph6_pAzvE8BdUMkNONUJLNDRETUNPSzUxMkNJRFY0Q0hKSS4u&route=shorturl&fbclid=IwY2xjawMDAjxleHRuA2FlbQIxMABicmlkETFGb3p1OFExMDN5Y254T3JzAR4hrOYEX55l6vhmW2wdZDMwm-lkzbSPvgwzcIzsvTC0bV9HQbatOysD0Doj6g_aem_N4tiP2ErdJ1hcXjuuWIi7g";
+// Flags para controlar qué slides mostrar
+const mostrarSlide1 = true;
+const mostrarSlide2 = false; // cámbialo a true si quieres mostrar el Slide 2
+
+// URLs de formularios
+const urlFormulario1 = "https://forms.cloud.microsoft/pages/responsepage.aspx?id=azJ7LIv7r0avLTLrVDJyX5cV9zGSZK5Ph6_pAzvE8BdUMkNONUJLNDRETUNPSzUxMkNJRFY0Q0hKSS4u";
 const urlFormulario2 = "https://system.amane.ec/account/register/";
 
-let slideActual = 'slide1';
+let slidesDisponibles = [];
+if (mostrarSlide1) slidesDisponibles.push('slide1');
+if (mostrarSlide2) slidesDisponibles.push('slide2');
+
+let slideActual = slidesDisponibles[0] || null;
 
 function cambiarSlide(direccion) {
-  if(document.getElementById('formulario').classList.contains('activa')) return;
-  
+  if (!slideActual || document.getElementById('formulario').classList.contains('activa')) return;
   reiniciarAnimaciones();
-  
-  const slides = ['slide1', 'slide2'];
-  const currentIndex = slides.indexOf(slideActual);
-  let nextIndex = currentIndex + direccion;
-  
-  if(nextIndex < 0) nextIndex = slides.length - 1;
-  if(nextIndex >= slides.length) nextIndex = 0;
-  
-  slideActual = slides[nextIndex];
-  
+
+  const currentIndex = slidesDisponibles.indexOf(slideActual);
+  let nextIndex = (currentIndex + direccion + slidesDisponibles.length) % slidesDisponibles.length;
+  slideActual = slidesDisponibles[nextIndex];
+
   document.querySelectorAll('.pantalla').forEach(p => p.classList.remove('activa'));
   document.getElementById(slideActual).classList.add('activa');
-  
   animarSlideActual();
 }
 
-function mostrarPantalla(id, url = "") {
+function mostrarPantalla(id, url="") {
   document.querySelectorAll('.pantalla').forEach(p => p.classList.remove('activa'));
   document.getElementById(id).classList.add('activa');
 
-  // Mostrar/ocultar flechas según corresponda
-  const mostrarFlechas = id !== 'formulario';
+  const mostrarFlechas = id !== 'formulario' && slidesDisponibles.length > 1;
   document.getElementById('flecha-izquierda').classList.toggle('oculto', !mostrarFlechas);
   document.getElementById('flecha-derecha').classList.toggle('oculto', !mostrarFlechas);
 
@@ -309,54 +250,33 @@ function volverASlide() {
 
 function reiniciarAnimaciones() {
   ['logo1','btn-container1','titulo1','subtitulo1','logo2','btn-container2','titulo2','subtitulo2']
-  .forEach(id => document.getElementById(id).classList.remove(
-    'animar-logo','animar-btn-container','animar-titulo','animar-subtitulo'
-  ));
-  void document.getElementById('logo1').offsetWidth; // Reflow
+    .forEach(id => {
+      if(document.getElementById(id)){
+        document.getElementById(id).classList.remove(
+          'animar-logo','animar-btn-container','animar-titulo','animar-subtitulo'
+        );
+      }
+    });
 }
 
 function animarSlideActual() {
-  const currentSlideNum = slideActual === 'slide1' ? 1 : 2;
-  
-  // Animación simultánea para logo y botón
+  const num = slideActual === 'slide1' ? 1 : 2;
   setTimeout(() => {
-    document.getElementById(`logo${currentSlideNum}`).classList.add('animar-logo');
-    document.getElementById(`btn-container${currentSlideNum}`).classList.add('animar-btn-container');
+    document.getElementById(`logo${num}`).classList.add('animar-logo');
+    document.getElementById(`btn-container${num}`).classList.add('animar-btn-container');
   }, 200);
-  
-  // Animación para textos
-  setTimeout(() => document.getElementById(`titulo${currentSlideNum}`).classList.add('animar-titulo'), 500);
-  setTimeout(() => document.getElementById(`subtitulo${currentSlideNum}`).classList.add('animar-subtitulo'), 800);
+  setTimeout(() => document.getElementById(`titulo${num}`).classList.add('animar-titulo'), 500);
+  setTimeout(() => document.getElementById(`subtitulo${num}`).classList.add('animar-subtitulo'), 800);
 }
 
-function animarInicio() {
-  // Animación inicial para el slide 1
-  setTimeout(() => {
-    document.getElementById('logo1').classList.add('animar-logo');
-    document.getElementById('btn-container1').classList.add('animar-btn-container');
-  }, 200);
-  setTimeout(() => document.getElementById('titulo1').classList.add('animar-titulo'), 500);
-  setTimeout(() => document.getElementById('subtitulo1').classList.add('animar-subtitulo'), 800);
-}
-
-window.onload = function() {
-  animarInicio();
-  
-  // Configuración adicional para iframe
-  const iframe = document.getElementById('iframeForm');
-  iframe.setAttribute('sandbox', 'allow-forms allow-same-origin allow-scripts allow-popups allow-modals');
-  iframe.setAttribute('allow', 'fullscreen');
-  
-  // Verificar si se está ejecutando localmente
-  if (window.location.protocol === 'file:') {
-    console.warn('Ejecutando localmente (file://). Para mejor compatibilidad, usa un servidor web local.');
+window.onload = () => {
+  if (slideActual) {
+    document.getElementById(slideActual).classList.add('activa');
+    animarSlideActual();
   }
-
-  // Configurar eventos de las flechas
   document.getElementById('flecha-izquierda').addEventListener('click', () => cambiarSlide(-1));
   document.getElementById('flecha-derecha').addEventListener('click', () => cambiarSlide(1));
 };
 </script>
-
 </body>
 </html>
